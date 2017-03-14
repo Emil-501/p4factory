@@ -1,3 +1,74 @@
+## P4factory
+
+FuZhou University, SDNLab.
+
+Added by Chen, 2017.3.14
+
+
+## Install Ryu:
+
+```
+sudo apt-get update
+sudo apt-get install git
+
+sudo apt-get install Python-pip build-essential python-dev libxml2-dev libxslt1-dev python-paramiko python-webob python-routes
+
+sudo pip install -U pip six oslo.config==3.0.0 eventlet msgpack-python
+
+git clone git://github.com/osrg/ryu.git
+cd ./ryu
+python ./setup.py install
+
+ryu-manager
+```
+
+## p4factory
+
+前言：这是尝试使用bmv1与p4ofagent构建实验环境的步骤说明。但是目前bmv1已经无用，因此需要通过bmv2来做接下来的内容。
+
+```
+cd p4factory/submodules/bm
+./autogen.sh
+./configure --with-pdfixed
+make
+// wait for half an hour
+make install
+
+cd p4factory/submodules/p4ofagent
+./configure CPPFLAGS=-D_BMV2_
+make p4ofagent 
+make install
+
+cd p4factory/submodules/p4c-behavioral
+sudo python setup.py install
+```
+
+### l2_switch
+
+```
+cd p4factory/target/l2_switch
+make bm-p4ofagent PLUGIN_OPENFLOW=1
+./run_demo.bash
+```
+
+### switch
+
+```
+cd p4factory/target/switch
+// please define the ENABLE_PLUGIN_OPENFLOW in main.c 
+// then make it, or like the command below:
+make bm-p4ofagent PLUGIN_OPENFLOW=1
+// remove the "//" in switch.p4
+```
+
+```
+make: *** [bm_tenjin_output_oldest] Error 1
+```
+
+=> [bmv1 not support anymore](http://lists.p4.org/pipermail/p4-dev_lists.p4.org/2016-November/000580.html)
+
+raw:
+
 P4 Model Repository
 ========
 
