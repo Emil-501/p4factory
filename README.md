@@ -1,9 +1,10 @@
-## P4factory
+# FZU
 
 FuZhou University, SDNLab.
 
-Added by Chen, 2017.3.14
+Added by Chen and Liu, 2017.3.14
 
+**To try p4ofagent, using behavioral-model(i.e.bmv2) instead of using this repo is recommended.** 
 
 ## Install Ryu:
 
@@ -66,8 +67,6 @@ make: *** [bm_tenjin_output_oldest] Error 1
 ```
 
 => [bmv1 not support anymore](http://lists.p4.org/pipermail/p4-dev_lists.p4.org/2016-November/000580.html)
-
-raw:
 
 P4 Model Repository
 ========
